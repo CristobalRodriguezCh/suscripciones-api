@@ -11,8 +11,8 @@ class Persona extends Model
     protected $table="personas";
     protected $fillable = [
         'nombre',
-        'apelido',
-        'fecha'
+        'apellido',
+        'fecha_nac'
     ];
     
 }

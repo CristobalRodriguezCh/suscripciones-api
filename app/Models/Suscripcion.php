@@ -9,6 +9,7 @@ class Suscripcion extends Model
 {
     use HasFactory;
     protected $table = "suscripciones";
+    public $timestamps = false;
     protected $fillable = [
         'estado',
         'fecha_ini',

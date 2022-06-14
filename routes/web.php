@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+// Route::view('/personas','personas')->name('personas');
+#Route::get('/personas','personas')->name('personas');
+// podemos user uno de los dos pero el metodo view es mas rapido
+// 
+
+Route::get('personas','App\Http\Controllers\PersonaController@indexWeb');

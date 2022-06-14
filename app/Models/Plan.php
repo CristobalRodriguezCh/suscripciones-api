@@ -13,6 +13,8 @@ class Plan extends Model
         'nombre',
         'precio',
         'descuento',
+        'descripcion',
+        'cantidad_personas',
         'duracion'
     ];
 }
