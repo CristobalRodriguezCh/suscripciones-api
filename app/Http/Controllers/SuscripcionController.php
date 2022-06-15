@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Suscripcion;
+use Illuminate\Support\Facades\DB;
 use App\Models\Plan;
 
 class SuscripcionController extends Controller
@@ -64,6 +65,30 @@ class SuscripcionController extends Controller
         }
 
         return $fecha_final;
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(int $id){
+        //$suscripcion = Suscripcion::find($id);
+        // $suscripcion = DB::table('suscripciones')
+        // ->join('planes','suscripciones.id_plan','=','planes.id')
+        // ->select('suscripciones.*','planes.*')
+        // ->where('suscripciones.id','=',$id)
+        // ->get();
+
+        $sql = "select s.*,p.*  from suscripciones as s, planes as p where s.id_plan = p.id and s.id ={$id}";
+        $suscripcion = DB::select($sql);
+        //dd($suscripcion);
+
+        return response()->json([
+            'suscripcion'=>$suscripcion
+        ]);
     }
 
  

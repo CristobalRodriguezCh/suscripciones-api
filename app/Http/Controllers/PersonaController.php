@@ -18,11 +18,6 @@ class PersonaController extends Controller
         ],200);
     }
 
-    public function indexWeb(){
-        $personas = DB::table('personas')->get();
-        return view('personas',['personas' =>$personas]);
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -41,7 +36,33 @@ class PersonaController extends Controller
         ],201);
     }
 
+    
 
+    //** funciones para las peticiones via web */
+
+    public function indexWeb(){
+        $personas = DB::table('personas')->get();
+        return view('personas',['personas' =>$personas]); 
+    }
+
+
+    /**
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+    public function storeWeb(Request $request){
+        $persona = new Persona();
+        $persona->nombre = $request->nombre;
+        $persona->apellido = $request->apellido;
+        $persona->fecha_nac = $request->fecha_nac;
+        
+        if($persona->save()){
+            return redirect()->route('personas.get');
+        }else{
+            return redirect()->route('personas.create');
+        }
+
+    }
 
     
 }

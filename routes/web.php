@@ -22,4 +22,9 @@ Route::get('/', function () {
 // podemos user uno de los dos pero el metodo view es mas rapido
 // 
 
-Route::get('personas','App\Http\Controllers\PersonaController@indexWeb');
+// Route::get('personas','App\Http\Controllers\PersonaController@indexWeb');
+
+/** Rutas del modelo persona */
+Route::get('/personas','App\Http\Controllers\PersonaController@indexWeb')->name('personas.get');
+Route::view('/personas/create','personaCreate')->name('personas.create');
+Route::post('/personas','App\Http\Controllers\PersonaController@storeWeb')->name('persona.store');

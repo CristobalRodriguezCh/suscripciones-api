@@ -28,7 +28,9 @@ Route::post('planes','App\Http\Controllers\PlanController@store');
 
 /**rutas del modelo Suscripciones */
 Route::get('suscripciones','App\Http\Controllers\SuscripcionController@index');
+Route::get('suscripciones/{id}','App\Http\Controllers\SuscripcionController@show');
 Route::post('suscripciones','App\Http\Controllers\SuscripcionController@store');
 
 /**rutas del modelo pagos */
 Route::get('pagos','App\Http\Controllers\PagosController@index');
+Route::post('pagos','App\Http\Controllers\PagosController@store');

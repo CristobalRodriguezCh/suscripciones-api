@@ -14,5 +14,10 @@ class Persona extends Model
         'apellido',
         'fecha_nac'
     ];
+
+    public function suscripcion(){
+        return $this->hasOne('App\Suscripcion','id_persona','local_key');
+    }
+    
     
 }

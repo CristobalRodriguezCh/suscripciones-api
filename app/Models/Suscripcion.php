@@ -17,4 +17,8 @@ class Suscripcion extends Model
         'id_persona',
         'id_plan'
     ];
+
+    public function persona(){
+        return $this->belongsTo('App\Persona','id_persona','local_key');
+    }
 }
