@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Suscripcion;
 
 class Persona extends Model
 {
@@ -15,8 +16,8 @@ class Persona extends Model
         'fecha_nac'
     ];
 
-    public function suscripcion(){
-        return $this->hasOne('App\Suscripcion','id_persona','local_key');
+    public function suscripcion(){// una persona puede tener una suscripcion
+        return $this->hasOne(Suscripcion::class,'id_persona','id');
     }
     
     

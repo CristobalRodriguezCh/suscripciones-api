@@ -17,4 +17,8 @@ class Plan extends Model
         'cantidad_personas',
         'duracion'
     ];
+
+    public function suscripcion(){
+        return $this->hasMany('App\Suscripcion');
+    }
 }

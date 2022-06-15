@@ -28,3 +28,11 @@ Route::get('/', function () {
 Route::get('/personas','App\Http\Controllers\PersonaController@indexWeb')->name('personas.get');
 Route::view('/personas/create','personaCreate')->name('personas.create');
 Route::post('/personas','App\Http\Controllers\PersonaController@storeWeb')->name('persona.store');
+
+
+/**Rutas de suscripciones */
+Route::get('/suscripciones','App\Http\Controllers\SuscripcionController@indexweb')->name('suscripciones.get');
+Route::view('/suscripciones/create','suscripcionesCreate')->name('suscripciones.create');
+Route::post('/suscripciones','App\Http\Controllers\SuscripcionController@storeWeb')->name('suscripciones.store');
+
+/** Ruta para crear persona con suscripcion */

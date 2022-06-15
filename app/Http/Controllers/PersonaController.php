@@ -41,8 +41,8 @@ class PersonaController extends Controller
     //** funciones para las peticiones via web */
 
     public function indexWeb(){
-        $personas = DB::table('personas')->get();
-        return view('personas',['personas' =>$personas]); 
+        $personas = Persona::all();
+        return view('personas',['personas' =>$personas])->render(); 
     }
 
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Suscripcion;
 class Pagos extends Model
 {
     use HasFactory;
@@ -16,4 +17,10 @@ class Pagos extends Model
         'id_suscripcion',
         'adjunto'
     ];
+
+
+    //se puede realizar varios pagos a una suscripcion
+    public function suscripcion(){
+        return $this->belongsTo(Suscripcion::class,'id_suscripcion');
+    }
 }

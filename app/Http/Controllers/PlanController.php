@@ -33,7 +33,7 @@ class PlanController extends Controller
         $plan->save();
 
         return response()->json([
-            'msg'=>'usuario creado exitosamente',
+            'msg'=>'plan creado exitosamente',
             'plan'=>$plan
         ],201);
     }
