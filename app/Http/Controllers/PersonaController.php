@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Persona;
 use Illuminate\Support\Facades\DB;
+
+use App\Models\Persona;
+use App\Models\Plan;
+use App\Models\Suscripcion;
+use App\Http\Controller\SuscripcionController;
 class PersonaController extends Controller
 {
     
@@ -51,18 +55,40 @@ class PersonaController extends Controller
     * @return \Illuminate\Http\Response
     */
     public function storeWeb(Request $request){
+        
         $persona = new Persona();
         $persona->nombre = $request->nombre;
         $persona->apellido = $request->apellido;
         $persona->fecha_nac = $request->fecha_nac;
         
         if($persona->save()){
-            return redirect()->route('personas.get');
+            //guardar la suscripcion una vez
+            //se guarde la persona
+            $plan = json_decode( $request->plan);
+            $suscripcion = New Suscripcion();
+            $suscripcion->estado=1;
+            $suscripcion->fecha_ini=Date('Y-m-d');
+            $suscripcion->id_plan=$plan->id;
+            $suscripcion->id_persona=$persona->id;
+            
+            if($suscripcion->save()){
+                return redirect()->route('personas.get');
+            }
+            
         }else{
             return redirect()->route('personas.create');
         }
 
     }
 
+
+    /**
+     * @return Illuminate\Http\Response
+     */
+    public function createWeb(){
+        $planes = Plan::all();
+
+        return view('personaCreate',['planes' =>$planes])->render();
+    }
     
 }

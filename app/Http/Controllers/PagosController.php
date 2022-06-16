@@ -43,9 +43,27 @@ class PagosController extends Controller
         ],201);
     }
 
-    public function ComprobarMonto(){
 
+    public function indexWeb(){
+        $pagos = Pagos::all();
+        return view('pagos',['pagos'=>$pagos])->render();
     }
 
+
+    public function createWeb(){
+        $suscripciones = Suscripcion::all();
+        return view('pagosCreate',['suscripciones'=>$suscripciones])->render();
+    }
+
+    public function storeWeb(Request $request){
+        $pagos = new Pagos();
+        $pagos->valor = $request->valor;
+        $pagos->fecha = Date('Y-m-d');
+        $pagos->id_suscripcion = $request->id_suscripcion;
+
+        if($pagos->save()){
+            return redirect()->route('pagos.get');
+        }
+    }
 
 }

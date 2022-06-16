@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 /** Rutas del modelo persona */
 Route::get('/personas','App\Http\Controllers\PersonaController@indexWeb')->name('personas.get');
-Route::view('/personas/create','personaCreate')->name('personas.create');
+Route::get('/personas/create','App\Http\Controllers\PersonaController@createWeb')->name('personas.create');
 Route::post('/personas','App\Http\Controllers\PersonaController@storeWeb')->name('persona.store');
 
 
@@ -35,4 +35,7 @@ Route::get('/suscripciones','App\Http\Controllers\SuscripcionController@indexweb
 Route::view('/suscripciones/create','suscripcionesCreate')->name('suscripciones.create');
 Route::post('/suscripciones','App\Http\Controllers\SuscripcionController@storeWeb')->name('suscripciones.store');
 
-/** Ruta para crear persona con suscripcion */
+/** Ruta pagos */
+Route::get('/pagos','App\Http\Controllers\PagosController@indexWeb')->name('pagos.get');
+Route::get('/pagos/create','App\Http\Controllers\PagosController@createWeb')->name('pagos.create');
+Route::post('/pagos','App\Http\Controllers\PagosController@storeWeb')->name('pagos.store');

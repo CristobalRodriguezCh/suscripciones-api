@@ -2,9 +2,10 @@
 
 @section('content')
 <h3>Suscripciones</h3>
-<a href="{{ route('suscripciones.create') }}">Agregar Suscripcion</a>
+<a class="btn btn-outline-success" href="{{ route('suscripciones.create') }}">Agregar Suscripcion</a>
 <table class="table">
     <thead>
+        <th>id</th>
         <th>fecha de inicio</th>
         <th>fecha de fin</th>
         <th>persona</th>
@@ -13,6 +14,7 @@
     <tbody>
         @forelse($suscripciones as $suscripcion)
             <tr>
+                <td>{{ $suscripcion->id }}</td>
                 <td>{{ $suscripcion->fecha_ini }}</td>
                 <td>{{ $suscripcion->fecha_fin}}</td>
                 <td>{{ $suscripcion->persona->nombre}}</td>

@@ -22,6 +22,12 @@
             class="form-control mb-3"
             >
 
+            <select class="form-select mb-3" name="plan">
+                @foreach($planes as $plan)
+                    <option value="{{$plan}}">{{$plan->nombre}}</option>
+                @endforeach
+            </select>
+
             <input type="submit" value="Guardar" class="btn btn-info">
         </form>
     </div>

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Suscripcion;
 use Illuminate\Support\Facades\DB;
+use App\Models\Suscripcion;
 use App\Models\Plan;
 
 class SuscripcionController extends Controller
