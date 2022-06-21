@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Traits\CalcuFechaFin;
 use App\Models\Suscripcion;
 use App\Models\Plan;
 
-class SuscripcionController extends Controller
-{
+class SuscripcionController extends Controller{
+    use CalcuFechaFin;
     /**
      * @return Illuminate\Http\Response
      */
@@ -46,27 +47,6 @@ class SuscripcionController extends Controller
         ],200);
     }
 
-    /**
-     * calcula los dias de fin de la suscripcion 
-     * en base a la duracion del plan
-     * retorna la fecha de fin
-     */
-    private function CfechaFin(Plan $plan){
-        $fecha_ini = Date('Y-m-d');
-
-        if($plan->duracion=='mes'){
-            $fecha_final = Date('Y-m-d',strtotime($fecha_ini."+ 1 month"));
-        }elseif ($plan->duracion=='trimestral') {
-            $fecha_final = Date('Y-m-d',strtotime($fecha_ini."+ 3 month"));
-        }elseif ($plan->duracion=='semestral') {
-            $fecha_final = Date('Y-m-d',strtotime($fecha_ini."+ 6 month"));
-        }elseif ($plan->duracion=='anual'){
-            $fecha_final = Date('Y-m-d',strtotime($fecha_ini."+ 1 year"));
-        }
-
-        return $fecha_final;
-    }
-
 
     /**
      * Display the specified resource.
@@ -85,7 +65,7 @@ class SuscripcionController extends Controller
         $sql = "select s.*,p.*  from suscripciones as s, planes as p where s.id_plan = p.id and s.id ={$id}";
         $suscripcion = DB::select($sql);
         //dd($suscripcion);
-
+        
         return response()->json([
             'suscripcion'=>$suscripcion
         ]);
@@ -117,6 +97,4 @@ class SuscripcionController extends Controller
         }
 
     }
-
- 
 }

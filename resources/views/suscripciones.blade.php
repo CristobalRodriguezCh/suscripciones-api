@@ -10,6 +10,7 @@
         <th>fecha de fin</th>
         <th>persona</th>
         <th>plan</th>
+        <th>pago</th>
     </thead>
     <tbody>
         @forelse($suscripciones as $suscripcion)
@@ -19,6 +20,13 @@
                 <td>{{ $suscripcion->fecha_fin}}</td>
                 <td>{{ $suscripcion->persona->nombre}}</td>
                 <td>{{ $suscripcion->plan->nombre}}</td>
+                <td>
+                    @forelse($suscripcion->pagos as $pago)
+                        {{$pago->valor}}
+                    @empty
+                        <p>Sin pagos</p>
+                    @endforelse
+                </td>
                 {{-- <td> <a href="{{ route(nombre del a ruta),parametro }}">Detalles</a> </td> --}}
             </tr>
         @empty

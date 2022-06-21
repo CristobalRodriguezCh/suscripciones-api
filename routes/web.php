@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::view('/personas','personas')->name('personas');
 #Route::get('/personas','personas')->name('personas');
@@ -27,8 +27,8 @@ Route::get('/', function () {
 /** Rutas del modelo persona */
 Route::get('/personas','App\Http\Controllers\PersonaController@indexWeb')->name('personas.get');
 Route::get('/personas/create','App\Http\Controllers\PersonaController@createWeb')->name('personas.create');
+Route::get('personas/{id}','App\Http\Controllers\PersonaController@showWeb')->name('persona.show');
 Route::post('/personas','App\Http\Controllers\PersonaController@storeWeb')->name('persona.store');
-
 
 /**Rutas de suscripciones */
 Route::get('/suscripciones','App\Http\Controllers\SuscripcionController@indexweb')->name('suscripciones.get');

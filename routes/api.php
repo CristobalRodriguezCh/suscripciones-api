@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 /**rutas del modelo Persona */
 Route::get('personas','App\Http\Controllers\PersonaController@index');
-Route::post('personas','App\Http\Controllers\PersonaController@store');
+Route::post('personas','App\Http\Controllers\PersonaController@store')->name('personas.api.store');
 
 /**rutas del modelo Plan */
 Route::get('planes','App\Http\Controllers\PlanController@index');
